@@ -30,6 +30,26 @@ const questions = [
     message: "Choose a license for your application:",
     choices: ["MIT", "Apache 2.0", "GPL 3.0", "BSD 3", "None"],
   },
+  {
+    type: "input",
+    name: "installation",
+    message: "How do you install your application?",
+  },
+  {
+    type: "input",
+    name: "usage",
+    message: "How do you use your application?",
+  },
+  {
+    type: "input",
+    name: "contributing",
+    message: "How can others contribute to your project?",
+  },
+  {
+    type: "input",
+    name: "tests",
+    message: "Provide any tests for your application:",
+  },
 ];
 
 // TODO: Create a function to write README file
