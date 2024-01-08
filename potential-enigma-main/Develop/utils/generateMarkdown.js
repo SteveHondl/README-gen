@@ -3,13 +3,13 @@
 function renderLicenseBadge(license) {
   switch (license) {
     case "MIT":
-      return "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)";
+      return "![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)";
     case "Apache 2.0":
-      return "[![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)";
+      return "![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)";
     case "Mozilla Public License 2.0":
-      return "[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)";
+      return "![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)";
     case "BSD 3":
-      return "[![License: BSD 3](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
+      return "![License: BSD 3](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)";
     default:
       // If no license is selected
       return "";
@@ -18,13 +18,30 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {}
+function renderLicenseLink(license) {
+  switch (license) {
+    case "MIT":
+      return "[License MIT](https://opensource.org/licenses/MIT)";
+    case "Apache 2.0":
+      return "[License Apache 2.0](https://opensource.org/licenses/Apache-2.0)";
+    case "Mozilla Public License 2.0":
+      return "[License MPL 2.0](https://opensource.org/licenses/MPL-2.0)";
+    case "BSD 3":
+      return "[License BSD 3](https://opensource.org/licenses/BSD-3) ";
+    default:
+      // If no license is selected
+      return "";
+  }
+}
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
 function renderLicenseSection(license) {
-  if (license) {
-    return `## License\n  This project is licensed under the\n  [${license}](https://opensource.org/licenses/${license}) license.`;
+  if (license !== "None") {
+    return `## License\n  This project is licensed under the\n  ${renderLicenseLink(
+      license
+    )}
+    `;
   }
   return "";
 }
@@ -53,7 +70,6 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
 
-  ${renderLicenseLink(data.license)}
   ${renderLicenseSection(data.license)}
 
   ## Contributing
